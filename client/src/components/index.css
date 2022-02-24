@@ -209,5 +209,48 @@ body {
   align-items: center;
   background-color: rgb(25, 0, 48);
   min-width: 100%;
-  min-height: 90vh;
+  min-height: 85vh;
+}
+.heading {
+  color: #fff;
+  font-weight: 800;
+  font-size: 60px;
+  letter-spacing: 3px;
+  text-align: center;
+}
+@media (max-height: 789px) {
+  .heading {
+    font-size: 80px;
+  }
+}
+.paragraph {
+  color: rgb(204, 203, 203);
+  text-align: center;
+  margin-left: 0px;
+}
+@media (max-height: 700px) {
+  .paragraph {
+    margin-left: 400px;
+    margin-right: 400px;
+  }
+}
+.footer {
+  background: #000;
+  height: 55px;
+  margin-bottom: 0px;
+}
+@media (max-height: 789px) {
+  .footer {
+    height: 35px;
+  }
+}
+.footerContent {
+  color: rgb(204, 203, 203);
+  text-align: center;
+  letter-spacing: 0px;
+}
+@media (max-height: 789px) {
+  .footerContent {
+    letter-spacing: 2px;
+  }
 }
