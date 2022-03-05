@@ -48,7 +48,6 @@ const Signup = () => {
                   Sign Up
                 </button>
               </form>
-              {/* <a href="#">read more</a> */}
             </div>
           </div>
         </div>

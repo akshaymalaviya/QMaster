@@ -1,6 +1,4 @@
 import React from 'react'
-// import Form from './forms/Form'
-// import Posts from './posts/Posts'
 import { Routes, Route } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
@@ -11,10 +9,6 @@ import Signup from './components/signUp';
 import Footer from './components/footer';
 export default function App() {
   return (
-    // <div>App
-    // <Posts/>
-    // <Form/>
-    // </div>
     <>
       <Navbar />
       <Routes>
