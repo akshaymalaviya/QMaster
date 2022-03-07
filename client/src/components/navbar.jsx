@@ -6,9 +6,9 @@ import Q from './img/Q.png';
 const Navbar = () => {
   return (
     <>
-      <div classNameName="container-fluid">
-        <div classNameName="row">
-          <div classNameName="col-10 mx-auto">
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-10 mx-auto">
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
               <div className="container-fluid ms-lg-5 me-lg-5">
                 <NavLink exact className="navbar-brand" to="/">
@@ -17,7 +17,7 @@ const Navbar = () => {
                     alt=""
                     width="40"
                     height="40"
-                    class="d-inline-block align-text-top"
+                    className="d-inline-block align-text-top"
                   />
                   -Master
                 </NavLink>
