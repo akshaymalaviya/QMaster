@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
+import {useNavigate} from 'react-router-dom';
 const Signup = () => {
+  let navigate = useNavigate();
   const initialValues = { email: '', password: '', confirmPassword: '',name:'' };
   const [signupData, setSignupData] = useState({ initialValues });
   //to set errors of data
@@ -14,15 +15,21 @@ const Signup = () => {
   const signupForm = async(e) => {
     //it will not refresh the page;
     e.preventDefault();
-    const response=await fetch('http://localhost:5000/api/auth/register',{
+    const response=await fetch('/api/auth/register',{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
       },
-      body: JSON.stringify(signupData.name,signupData.email,signupData.password)
+      body: JSON.stringify({username:signupData.name,email:signupData.email,password:signupData.password,cpassword:signupData.confirmPassword})
     })
     const data=await response.json();
-    console.log(data);
+    if(!data || data.status===422){
+      alert("invalid register")
+    }
+    else{
+      alert("register done");
+      navigate('/login');
+    }
     //first validate the data and then set errors values
     setSignupErrors(validate(signupData));
   };

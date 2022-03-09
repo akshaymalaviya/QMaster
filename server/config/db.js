@@ -1,11 +1,20 @@
 import mongoose from "mongoose";
-const connectDB=async ()=>{
-    try {
-        await mongoose.connect("mongodb+srv://authantication:authantication@cluster0.tbawd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+import dotenv from "dotenv";
+dotenv.config({ path:'./config.env' });
+const url = process.env.URL;
 
-    } catch (error) {
-        console.log("failed to connect mongodb");
-    }
-
-}
+const connectDB = async () => {
+  try {
+    await mongoose
+      .connect(url)
+      .then((req, res) => {
+        // console.log("db done");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  } catch (error) {
+    console.log("failed to connect mongodb");
+  }
+};
 export default connectDB;

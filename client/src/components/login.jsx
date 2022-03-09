@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
+  let navigate=useNavigate();
   const initialValues = { email: '', password: '' };
   const [loginData, setLoginData] = useState(initialValues);
   //to set errors of data
@@ -12,16 +13,21 @@ const Login = () => {
   };
   const loginForm = async(e) => {
     e.preventDefault();
-    const response=await fetch('http://localhost:5000/api/signin',{
+    const response=await fetch('/api/auth/login',{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
       },
-      body: JSON.stringify(loginData.email,loginData.password)
+      body: JSON.stringify({email:loginData.email,password:loginData.password})
     })
     const data=await response.json();
-
-    console.log(data)
+    if(!data || data.status===400){
+      alert("invalid log")
+    }
+    else{
+      alert("login done");
+      navigate('/');
+    }
     //it will not refresh the page;
     setloginErrors(validate(loginData));
   };
@@ -45,7 +51,7 @@ const Login = () => {
             <div className="content">
               <h2>Q-Master</h2>
               <h3>Sign In</h3>
-              <form onSubmit={loginForm}>
+              <form onSubmit={loginForm} method="POST">
                 <div className="mb-1">
                   <label for="exampleInputEmail1" className="form-label">
                     Email address
