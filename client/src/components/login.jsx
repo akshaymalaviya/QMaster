@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { userContext } from '../App';
 const Login = () => {
+  const {state,dispatch}  = useContext(userContext)
   let navigate=useNavigate();
   const initialValues = { email: '', password: '' };
   const [loginData, setLoginData] = useState(initialValues);
@@ -25,6 +27,7 @@ const Login = () => {
       alert("invalid log")
     }
     else{
+      dispatch({type:'USER',payload:true});
       alert("login done");
       navigate('/');
     }

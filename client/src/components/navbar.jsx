@@ -1,9 +1,12 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { NavLink } from 'react-router-dom';
 import './index.css';
 import Q from './img/Q.png';
+import { userContext } from '../App';
 
 const Navbar = () => {
+  const {state,dispatch}  = useContext(userContext)
+
   return (
     <>
       <div className="container-fluid">
@@ -48,6 +51,7 @@ const Navbar = () => {
                         Home
                       </NavLink>
                     </li>
+                    {!state?<>
                     <li className="nav-item">
                       <NavLink exact className="nav-link" to={'/login'}>
                         Log In
@@ -57,7 +61,18 @@ const Navbar = () => {
                       <NavLink exact className="nav-link" to={'/signup'}>
                         Sign Up
                       </NavLink>
+                    </li></>:null}
+                    <li className="nav-item">
+                      <NavLink exact className="nav-link" to={'/about'}>
+                        About user
+                      </NavLink>
                     </li>
+                    {state?
+                    <li className="nav-item">
+                      <NavLink exact className="nav-link" to={'/logout'}>
+                        Logout
+                      </NavLink>
+                    </li>:null}
                   </ul>
                 </div>
               </div>
