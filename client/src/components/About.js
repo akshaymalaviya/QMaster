@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function About() {
   let navigate = useNavigate();
-   const [first, setfirst] = useState();
+   const [first, setfirst] = useState(false);
   const callAboutPage = async () => {
     try {
       const response = await fetch("/api/auth/about", {
@@ -30,14 +30,15 @@ export default function About() {
   };
   useEffect(() => {
     callAboutPage();
-  },[]);
+  });
 
   return (
-  <><div>About</div>
-  {first?
+  <>{first?<><div>About</div>
+  
   <ul>
   <li>{first.email}</li>
   <li>{first.username}</li>
-  </ul>:null}
-  </>);
+  </ul></>:null}
+  </>
+  );
 }

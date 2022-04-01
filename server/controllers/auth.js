@@ -1,6 +1,8 @@
 import user from "../models/User.js";
 import connectDB from "../config/db.js";
 import bycrptjs from "bcryptjs";
+import {v4} from 'uuid';
+
 connectDB();
 export async function register(req, res) {
   try {
@@ -55,4 +57,7 @@ export function forgotpassword(req, res, next) {
 }
 export function resetpassword(req, res, next) {
   res.send("Rp");
+}
+export function createQuizCode(req, res, next) {
+  res.send(v4().slice(0,6)); 
 }

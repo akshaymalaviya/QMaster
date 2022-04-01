@@ -4,7 +4,7 @@ import { userContext } from '../App';
 
 export default function Logout() {
   let navigate = useNavigate();
-  const {state,dispatch}  = useContext(userContext)
+  const {dispatch}  = useContext(userContext)
 
   useEffect(() => {
     fetch("/api/auth/logout", {

@@ -5,7 +5,7 @@ import Q from './img/Q.png';
 import { userContext } from '../App';
 
 const Navbar = () => {
-  const {state,dispatch}  = useContext(userContext)
+  const {state}  = useContext(userContext)
 
   return (
     <>

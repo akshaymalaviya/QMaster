@@ -4,14 +4,19 @@ import {
   login,
   forgotpassword,
   resetpassword,
+  createQuizCode,
 } from "../controllers/auth.js";
 import Authanticate from "../middleware/authanticat.js";
 const router = express.Router();
 router.route("/register").post(register);
 router.route("/login").post(login);
+router.route("/createQuizCode").get(createQuizCode);
 router.route("/forgotpassword").post(forgotpassword);
 router.route("/resetpassword:restToken").put(resetpassword);
 router.route("/about").get(Authanticate, (req, res) => {
+  res.send(req.rootUser);
+});
+router.route("/getdata").get(Authanticate, (req, res) => {
   res.send(req.rootUser);
 });
 router.route("/logout").get((req, res) => {
