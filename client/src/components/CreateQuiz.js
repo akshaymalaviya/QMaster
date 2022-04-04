@@ -24,12 +24,11 @@ export default function CreateQuiz() {
   };
   return (
     <>
-      {console.log(type)}
       <div>CreateQuiz</div>
       <input type="text" placeholder="Question" />
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
-          Dropdown Button
+          Option type
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
@@ -64,6 +63,8 @@ export default function CreateQuiz() {
         </Dropdown.Menu>
       </Dropdown>
       {type ? <SelectedType /> : null}
+      <hr/>
+      
     </>
   );
 }
