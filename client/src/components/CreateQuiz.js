@@ -24,10 +24,10 @@ export default function CreateQuiz() {
   };
   return (
     <>
-      <div>CreateQuiz</div>
-      <input type="text" placeholder="Question" />
       <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <input type="text" placeholder="Question"  style={{margin:'2px'}}/>
+
+        <Dropdown.Toggle variant="success" id="dropdown-basic" style={{marginBottom:'1px'}}>
           Option type
         </Dropdown.Toggle>
 

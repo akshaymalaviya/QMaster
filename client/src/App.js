@@ -20,7 +20,9 @@ export default function App() {
   return (
     <>
     <userContext.Provider value={{state,dispatch}}>
-      <Navbar />
+    <Navbar />
+
+
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
@@ -32,8 +34,9 @@ export default function App() {
         <Route exact path="/logout" element={<Logout/>} />
         <Route path="*" component={<Home />} />
       </Routes>
-      <Footer/>
+      
       </userContext.Provider>
+      <Footer/>
     </>
   )
 }

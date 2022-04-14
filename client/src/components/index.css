@@ -48,14 +48,14 @@ body {
   }
 }
 
-.backgroung {
+.background {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 90vh;
   background-color: rgb(25, 0, 48);
 }
-.backgroung::before {
+.background::before {
   content: '';
   position: absolute;
   height: 100%;
@@ -65,7 +65,7 @@ body {
   background: linear-gradient(#fffb03, #ff7300);
   clip-path: circle(30% at right 70%);
 }
-.backgroung::after {
+.background::after {
   content: '';
   position: absolute;
   height: 100%;
@@ -87,7 +87,7 @@ body {
 .container1 .card {
   position: relative;
   width: 380px;
-  height: 400px;
+  height: 450px;
   margin: 30px;
   box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
@@ -104,7 +104,7 @@ body {
 .container1 .card_signup {
   position: relative;
   width: 380px;
-  height: 500px;
+  height: 550px;
   margin: 30px;
   box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
@@ -192,7 +192,7 @@ body {
   position: relative;
   display: inline-block;
   padding: 8px 20px;
-  margin-top: -140px;
+  margin-top: -160px;
   text-decoration: none;
   background: #fff;
   color: black;
@@ -253,4 +253,53 @@ body {
   .footerContent {
     letter-spacing: 2px;
   }
+}
+.formError {
+  font-size: 12px;
+  color: rgb(252, 56, 56);
+}
+.QuizQueue {
+  display: flex;
+  justify-content: center;
+  min-height: 90vh;
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
+.queue {
+  height: 100px;
+  width: 700px;
+  border: 2px solid black;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow: 5px 10px #888888;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 10px;
+  padding-left: 25px;
+  background-color: rgb(245, 120, 120);
+  cursor: pointer;
+}
+.queue h3 {
+  color: #000;
+  font-weight: 600;
+  font-size: 0.7cm;
+}
+.queue .detail {
+  display: flex;
+  width: 500px;
+}
+.queue .detail .date {
+  width: 250px;
+}
+.queue .detail .date p {
+  text-align: left;
+  font-size: 0.5cm;
+}
+.queue .detail .status {
+  width: 250px;
+}
+.queue .detail .status h5 {
+  text-align: right;
+  font-weight: 600;
 }

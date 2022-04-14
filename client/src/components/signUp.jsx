@@ -56,7 +56,7 @@ const Signup = () => {
 
   return (
     <>
-      <div className="backgroung">
+      <div className="background">
         <div className="container1 ">
           <div className="card_signup">
             <div className="content">
