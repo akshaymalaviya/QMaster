@@ -4,7 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 export default function Radio() {
   var arr = [1, 2, 3, 4];
   const [tagList, settagList] = useState([]);
-  const [visible, setvisible] = useState(false);
+  const [visible, setvisible] = useState(true);
   const [currentTag, setcurrentTag] = useState("");
   var k = ["", "", "", ""];
   const OneRadioButton = (props) => {
@@ -120,7 +120,7 @@ export default function Radio() {
           placeholder="Search Topic here"
           onChange={(e) => setcurrentTag(e.target.value)}
           onBlur={() => setvisible(false)}
-          onClick={() => setvisible(true)}
+          // onClick={() => setvisible(true)}
           value={currentTag}
         />
         <div

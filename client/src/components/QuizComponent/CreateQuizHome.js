@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import CreateQuiz from "../CreateQuiz";
-
+import { useNavigate } from "react-router-dom";
 export default function CreateQuizHome() {
+  let navigate = useNavigate();
+const dbCreateQuiz=()=>{
+  alert("Quiz created successfully")
+  navigate("/")
+}
   const [count, setcount] = useState(0);
   var rows = [],
     i = 0,
@@ -29,6 +34,8 @@ export default function CreateQuizHome() {
       })}
       <button onClick={Add}>Add question</button>
       <button onClick={remove}>Remove question</button>
+      <button onClick={dbCreateQuiz}>Create Quiz</button>
+
     </div>
   );
 }
