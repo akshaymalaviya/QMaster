@@ -2,7 +2,8 @@ import user from "../models/User.js";
 import connectDB from "../config/db.js";
 import bycrptjs from "bcryptjs";
 import {v4} from 'uuid';
-
+import test from '../models/Test.js';
+import database from '../models/Dataset.js'
 connectDB();
 export async function register(req, res) {
   try {
@@ -59,5 +60,35 @@ export function resetpassword(req, res, next) {
   res.send("Rp");
 }
 export function createQuizCode(req, res, next) {
-  res.send(v4().slice(0,6)); 
+  res.json(v4().slice(0,6)); 
+}
+export async function createQuiz(req, res) {
+  try {
+    const { tempList } = req.body;
+    if (!tempList) {
+      return res.status(422).json({ error: "Enter valid data" });
+    }
+    
+      const Test = new test({tempList});
+      const TestRegister = await Test.save();
+      if (TestRegister) res.status(201).json({ message: "hurrayy!!" });
+      else res.status(500).json({ error: "failed to register" });
+      // res.send("quiz creation");
+  } catch (error) {
+    console.log(error);
+  }
+}
+export function getCreateQuiz(req, res, next) {
+  database.find({},(err,datas)=>{
+    if(err) console.log(err)
+    res.json(datas); 
+  })
+  
+}
+export function getQuiz(req, res, next) {
+  test.find({},(err,datas)=>{
+    if(err) console.log(err)
+    res.json(datas); 
+  })
+  
 }

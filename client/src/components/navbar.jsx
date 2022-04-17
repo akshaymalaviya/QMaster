@@ -67,6 +67,11 @@ const Navbar = () => {
                         About user
                       </NavLink>
                     </li>
+                    <li className="nav-item">
+                      <NavLink exact className="nav-link" to={'/quizlist'}>
+                        QuizList
+                      </NavLink>
+                    </li>
                     {state?
                     <li className="nav-item">
                       <NavLink exact className="nav-link" to={'/logout'}>

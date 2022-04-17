@@ -1,18 +1,19 @@
-import React, { useEffect,useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
-export default function About() {
-  let navigate = useNavigate();
-   const [first, setfirst] = useState(false);
+export default function QuizLIst() {
+  const [first, setfirst] = useState(false);
+  useEffect(() => {
+    // callAboutPage();
+  }, []);
   const callAboutPage = async () => {
     try {
-      const response = await fetch("/api/auth/about", {
+      const response = await fetch("/api/auth/userQuiz", {
         method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        credentials: "include"
+        credentials: "include",
       });
 
       const data = await response.json();
@@ -23,18 +24,13 @@ export default function About() {
       }
     } catch (error) {
       console.log(error);
-      navigate("/login");
     }
   };
-  useEffect(() => {
-    callAboutPage();
-  });
-
   return (
-  <>{first?<><div>About</div>
+      <>{first?<><div>Quiz LIst</div>
   
   <ul>
-  <li>{first.email}</li>
+  <li>{console.log(first)}</li>
   <li>{first.username}</li>
   </ul></>:null}
   </>

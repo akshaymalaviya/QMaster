@@ -4,12 +4,12 @@ import Checkbox from "./QuizComponent/Checkbox";
 import Radio from "./QuizComponent/Radio";
 import Textarea from "./QuizComponent/Textarea";
 import TF from "./QuizComponent/TF";
-export default function CreateQuiz() {
+export default function CreateQuiz(props) {
   const [type, settype] = useState(null);
   const SelectedType = () => {
     switch (type) {
       case "radio":
-        return (<Radio/>);
+        return (<Radio index={props.index}/>);
       case "checkbox":
         return (<Checkbox/>);
       case "TF":
@@ -25,7 +25,6 @@ export default function CreateQuiz() {
   return (
     <>
       <Dropdown>
-      <input type="text" placeholder="Question"  style={{margin:'2px'}}/>
 
         <Dropdown.Toggle variant="success" id="dropdown-basic" style={{marginBottom:'1px'}}>
           Option type

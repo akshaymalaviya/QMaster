@@ -1,10 +1,14 @@
 import express from "express";
+
 import {
   register,
   login,
   forgotpassword,
   resetpassword,
   createQuizCode,
+  createQuiz,
+  getCreateQuiz,
+  getQuiz,
 } from "../controllers/auth.js";
 import Authanticate from "../middleware/authanticat.js";
 const router = express.Router();
@@ -12,6 +16,10 @@ router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/createQuizCode").get(createQuizCode);
 router.route("/forgotpassword").post(forgotpassword);
+router.route("/createQuiz").post(createQuiz);
+router.route("/createQuiz").get(getCreateQuiz);
+router.route("/userQuiz").get(getQuiz);
+
 router.route("/resetpassword:restToken").put(resetpassword);
 router.route("/about").get(Authanticate, (req, res) => {
   res.send(req.rootUser);
