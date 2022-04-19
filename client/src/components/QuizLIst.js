@@ -1,11 +1,36 @@
 import React, { useEffect, useState } from "react";
+import ExistedQuizView from "../ExistedQuizView";
+import { useNavigate } from 'react-router-dom';
 
 export default function QuizLIst() {
+  let navigate=useNavigate();
+
   const [first, setfirst] = useState(false);
+  const [quizData, setquizData] = useState([]);
   useEffect(() => {
-    // callAboutPage();
+    callAboutPage();
   }, []);
+
   const callAboutPage = async () => {
+    try {
+      const response = await fetch("/api/auth/about", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      const data = await response.json();
+      setfirst(data._id);
+      if (!response.status === 200) {
+        const error = new Error(response.error);
+        throw error;
+      }
+    } catch (error) {
+      console.log(error);
+    }
     try {
       const response = await fetch("/api/auth/userQuiz", {
         method: "GET",
@@ -17,7 +42,7 @@ export default function QuizLIst() {
       });
 
       const data = await response.json();
-      setfirst(data);
+      setquizData(data);
       if (!response.status === 200) {
         const error = new Error(response.error);
         throw error;
@@ -27,12 +52,17 @@ export default function QuizLIst() {
     }
   };
   return (
-      <>{first?<><div>Quiz LIst</div>
-  
-  <ul>
-  <li>{console.log(first)}</li>
-  <li>{first.username}</li>
-  </ul></>:null}
+      <>{first?quizData.filter((e,i)=>(e.tempList.userID===first)).map((e,i)=>{
+        return(
+          <>
+          <div onClick={()=>navigate('/existedquizview',{state:e.tempList.quizData})}>
+            <h1>{e.tempList.timestamp}</h1>
+            <h1>{e.tempList.quizID}</h1>
+            </div>
+            
+          </>
+        )
+      }):null}
   </>
   );
 }

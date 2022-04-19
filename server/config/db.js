@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config({ path: "./config.env" });
 const url = process.env.URL;
+const quizUrl = process.env.Q_URL;
 
 const connectDB = async () => {
   try {

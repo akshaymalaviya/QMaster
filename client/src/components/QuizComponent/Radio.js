@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
 import SearchIcon from "@material-ui/icons/Search";
 import CancelIcon from "@material-ui/icons/Cancel";
 var obj = {};
 function Radio(props) {
+  const [first, setfirst] = useState([])
   var arr = [1, 2, 3, 4];
+  var Data=[];
   var visible = true;
   // localStorage.removeItem(`mcq1`)
   var dataCheck = JSON.parse(localStorage.getItem(`mcq${props.index}`));
@@ -105,6 +107,27 @@ function Radio(props) {
       </>
     );
   };
+  const getSuggestion=async()=>{
+    try {
+      const response = await fetch("/api/auth/createQuiz", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      const data = await response.json();
+      setfirst(data[0].database);
+      if (!response.status === 200) {
+        const error = new Error(response.error);
+        throw error;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const Search = () => {
     const [tagList, settagList] = useState(flag ? dataCheck.suggestion : []);
 
@@ -129,7 +152,7 @@ function Radio(props) {
             marginLeft: "100px",
           }}
         >
-          {Data.filter((post) => {
+          {first.filter((post) => {
             if (currentTag === "") {
               return post;
             } else if (
@@ -142,11 +165,11 @@ function Radio(props) {
               <div
                 onClick={() => {
                   setcurrentTag("");
-                  settagList([...new Set([...tagList, post.title])]);
-                  suggestion = [...new Set([...tagList, post.title])];
+                  settagList([...new Set([...tagList, post])]);
+                  suggestion = [...new Set([...tagList, post])];
                 }}
               >
-                <p>{post.title}</p>
+                <p>{post}</p>
               </div>
             </div>
           ))}
@@ -168,12 +191,11 @@ function Radio(props) {
       </div>
     );
   };
-  var Data = [
-    { id: 1, title: "abcccc", author: "a1" },
-    { id: 2, title: "acccccb", author: "b1" },
-    { id: 3, title: "c", author: "c1" },
-    { id: 4, title: "d", author: "d1" },
-  ];
+  useEffect(() => {
+    getSuggestion()
+  }, [])
+  
+
   // localStorage.removeItem('mcq');
 
   const finalQuestion = async () => {
