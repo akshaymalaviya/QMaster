@@ -13,7 +13,6 @@ export default function About() {
           "Content-Type": "application/json",
         },
         credentials: "include"
-        // body: JSON.stringify({username:signupData.name,email:signupData.email,password:signupData.password,cpassword:signupData.confirmPassword})
       });
 
       const data = await response.json();
@@ -23,7 +22,6 @@ export default function About() {
         throw error;
       }
     } catch (error) {
-      console.log("hiiiiiiiiiii");
       console.log(error);
       navigate("/login");
     }

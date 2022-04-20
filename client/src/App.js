@@ -13,6 +13,10 @@ import CreateQuiz from './components/CreateQuiz';
 import reducer, { initialState } from './components/reducer/Usereducer';
 import QuizQueue from './components/QuizQueue';
 import CreateQuizHome from './components/QuizComponent/CreateQuizHome';
+import QuizLIst from './components/QuizLIst';
+import ExistedQuizView from './ExistedQuizView';
+import AttandQuizQusetions from './AttandQuizQusetions';
+import ReportListData from './ReportListData';
 export const userContext = createContext();
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -26,10 +30,24 @@ export default function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/about" element={<About />} />
+          <Route exact path="/quizlist" element={<QuizLIst />} />
           <Route exact path="/attendQuiz" element={<AttendQuiz />} />
           <Route exact path="/createQuiz" element={<CreateQuizHome />} />
           <Route exact path="/quizQueue" element={<QuizQueue />} />
+          <Route
+            exact
+            path="/attandquizquestion"
+            element={<AttandQuizQusetions />}
+          />
+
+          <Route exact path="/existedquizview" element={<ExistedQuizView />} />
           <Route exact path="/logout" element={<Logout />} />
+          <Route
+            exact
+            path="/existedquizview/reportlistdata"
+            element={<ReportListData />}
+          />
+
           <Route path="*" component={<Home />} />
         </Routes>
       </userContext.Provider>
