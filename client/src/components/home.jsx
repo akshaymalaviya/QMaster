@@ -1,5 +1,6 @@
-import React, { useEffect,useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Footer from './footer';
 
 const Home = () => {
   const [first, setfirst] = useState(false);
@@ -7,13 +8,13 @@ const Home = () => {
 
   const callAboutPage = async () => {
     try {
-      const response = await fetch("/api/auth/getdata", {
-        method: "GET",
+      const response = await fetch('/api/auth/getdata', {
+        method: 'GET',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
-        credentials: "include"
+        credentials: 'include',
       });
 
       const data = await response.json();
@@ -29,21 +30,38 @@ const Home = () => {
   useEffect(() => {
     callAboutPage();
   });
-  const attendQuiz=()=>{
-    navigate("/attendQuiz");
-  }
-  const createQuiz=()=>{
-    navigate("/createQuiz");
-  }
+  const attendQuiz = () => {
+    navigate('/attendQuiz');
+  };
+  const createQuiz = () => {
+    navigate('/createQuiz');
+  };
   return (
     <>
       <div className="container bgOfHome">
         <div className="row">
           <div className="mx-auto ">
-            <h2 className="heading">Welcome to Q-Master<br/>
-            {first?<>
-            <button type="button" className="btn btn-primary mx-3" onClick={attendQuiz}>Attend Quiz</button>
-            <button type="button" className="btn btn-success mx-3" onClick={createQuiz}>Create Quiz</button></>:null}
+            <h2 className="heading">
+              Welcome to Q-Master
+              <br />
+              {first ? (
+                <>
+                  <button
+                    type="button"
+                    className="btn btn-primary mx-3"
+                    onClick={attendQuiz}
+                  >
+                    Attend Quiz
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-success mx-3"
+                    onClick={createQuiz}
+                  >
+                    Create Quiz
+                  </button>
+                </>
+              ) : null}
             </h2>
             <p className="paragraph mt-5 ">
               Always wanted to make a quiz, but couldn't find an easy quiz
@@ -54,6 +72,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

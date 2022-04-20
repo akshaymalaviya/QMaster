@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
-import SearchIcon from "@material-ui/icons/Search";
+import React, { useState } from 'react';
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import SearchIcon from '@material-ui/icons/Search';
 export default function Radio() {
   var arr = [1, 2, 3, 4];
   const [tagList, settagList] = useState([]);
   const [visible, setvisible] = useState(true);
-  const [currentTag, setcurrentTag] = useState("");
-  var k = ["", "", "", ""];
+  const [currentTag, setcurrentTag] = useState('');
+  var k = ['', '', '', ''];
   const OneRadioButton = (props) => {
     const change = (e) => {
       k[props.val] = e.target.value;
@@ -17,6 +17,7 @@ export default function Radio() {
         <div className="radio-btn">
           <RadioButtonUncheckedIcon />
           <input
+            className="radioInput"
             type="text"
             onChange={change}
             placeholder={`option ${props.val}`}
@@ -26,14 +27,14 @@ export default function Radio() {
     );
   };
   const Answers = () => {
-    const [tripType, setTripType] = useState("1");
+    const [tripType, setTripType] = useState('1');
     return (
       <>
-        <div style={{ display: "flex", margin: "3px" }}>
+        <div style={{ display: 'flex', margin: '3px' }}>
           <div
             className="radio-btn"
             onClick={() => {
-              setTripType("1");
+              setTripType('1');
             }}
           >
             1.
@@ -41,14 +42,14 @@ export default function Radio() {
               type="radio"
               value={tripType}
               name="tripType"
-              checked={tripType === "1"}
+              checked={tripType === '1'}
             />
-          </div>{" "}
+          </div>{' '}
           &nbsp;&nbsp;&nbsp;
           <div
             className="radio-btn"
             onClick={() => {
-              setTripType("2");
+              setTripType('2');
             }}
           >
             2.
@@ -56,14 +57,14 @@ export default function Radio() {
               type="radio"
               value={tripType}
               name="tripType"
-              checked={tripType === "2"}
+              checked={tripType === '2'}
             />
-          </div>{" "}
+          </div>{' '}
           &nbsp;&nbsp;&nbsp;
           <div
             className="radio-btn"
             onClick={() => {
-              setTripType("3");
+              setTripType('3');
             }}
           >
             3.
@@ -71,14 +72,14 @@ export default function Radio() {
               type="radio"
               value={tripType}
               name="tripType"
-              checked={tripType === "3"}
+              checked={tripType === '3'}
             />
-          </div>{" "}
+          </div>{' '}
           &nbsp;&nbsp;&nbsp;
           <div
             className="radio-btn"
             onClick={() => {
-              setTripType("4");
+              setTripType('4');
             }}
           >
             4.
@@ -86,7 +87,7 @@ export default function Radio() {
               type="radio"
               value={tripType}
               name="tripType"
-              checked={tripType === "4"}
+              checked={tripType === '4'}
             />
           </div>
         </div>
@@ -95,10 +96,10 @@ export default function Radio() {
   };
 
   var Data = [
-    { id: 1, title: "abcccc", author: "a1" },
-    { id: 2, title: "acccccb", author: "b1" },
-    { id: 3, title: "c", author: "c1" },
-    { id: 4, title: "d", author: "d1" },
+    { id: 1, title: 'abcccc', author: 'a1' },
+    { id: 2, title: 'acccccb', author: 'b1' },
+    { id: 3, title: 'c', author: 'c1' },
+    { id: 4, title: 'd', author: 'd1' },
   ];
 
   return (
@@ -116,6 +117,7 @@ export default function Radio() {
         <SearchIcon htmlColor="blue" />
 
         <input
+          className="topicName"
           type="text"
           placeholder="Search Topic here"
           onChange={(e) => setcurrentTag(e.target.value)}
@@ -125,15 +127,15 @@ export default function Radio() {
         />
         <div
           style={{
-            height: "auto",
-            width: "140px",
-            overflow: "scroll",
-            marginLeft: "100px",
+            height: 'auto',
+            width: '140px',
+            overflow: 'scroll',
+            marginLeft: '100px',
           }}
         >
           {visible
             ? Data.filter((post) => {
-                if (currentTag === "") {
+                if (currentTag === '') {
                   return post;
                 } else if (
                   post.title.toLowerCase().includes(currentTag.toLowerCase())
@@ -142,15 +144,25 @@ export default function Radio() {
                 }
               }).map((post, index) => (
                 <div key={index}>
-                  <div onClick={() => {console.log("hi")}}>
-                    <p onClick={() => {console.log("hpp")}}>{post.title}</p>
+                  <div
+                    onClick={() => {
+                      console.log('hi');
+                    }}
+                  >
+                    <p
+                      onClick={() => {
+                        console.log('hpp');
+                      }}
+                    >
+                      {post.title}
+                    </p>
                     <p>{post.author}</p>
                   </div>
                 </div>
               ))
             : null}
         </div>
-        <div style={{ backgroundColor: "silver" }}>{tagList}</div>
+        <div style={{ backgroundColor: 'silver' }}>{tagList}</div>
         <Answers />
       </div>
     </div>

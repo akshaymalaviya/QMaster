@@ -1,0 +1,42 @@
+let python = [
+  {
+    "id": 0,
+    "topic": "Loop"
+  },
+  {
+    "id": 1,
+    "topic": "Variable"
+  },
+  {
+    "id": 2,
+    "topic": "Functions"
+  },
+  {
+    "id": 3,
+    "topic": "File handling"
+  },
+  {
+    "id": 4,
+    "topic": "Collections"
+  },
+  {
+    "id": 5,
+    "topic": "Exception Handling"
+  },
+  {
+    "id": 6,
+    "topic": "Regex"
+  },
+  {
+    "id": 7,
+    "topic": "Inheritance"
+  },
+  {
+    "id": 8,
+    "topic": "Polymorphism"
+  },
+  {
+    "id": 9,
+    "topic": "Class"
+  },
+]

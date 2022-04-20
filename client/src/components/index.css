@@ -303,3 +303,41 @@ body {
   text-align: right;
   font-weight: 600;
 }
+.addQuestion {
+  height: 50px;
+  width: 600px;
+  margin: 2px;
+}
+.createQuiz {
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 10px;
+}
+.createQuiz h2 {
+  margin: 20px;
+}
+.createQuiz .createQuiz_btn {
+  background: #34495e;
+  color: #fff;
+  border-radius: 7px;
+  border: none;
+  margin: 2px;
+  height: 32px;
+  width: 150px;
+}
+.createQuiz .createQuiz_btn:hover {
+  background: #283747;
+  transition: 0.4s;
+}
+.radioInput {
+  margin: 3px;
+  border-radius: 5px;
+  border: 2px solid rgb(131, 130, 130);
+  height: 35px;
+  width: 250px;
+}
+.topicName {
+  margin: 10px 0px 20px 0px;
+}
