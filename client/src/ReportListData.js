@@ -39,11 +39,12 @@ export default function ReportListData() {
   }, []);
   useEffect(() => {
     filterizeData();
-  }, []);
+  }, [list]);
 
   const filterizeData = () => {
     // list.filter((e,i)=>(e.quizID===location.state.quizID))
     var y = [],
+      xy = [],
       x = [];
     let i = 0;
 
@@ -62,6 +63,11 @@ export default function ReportListData() {
         }
       });
     });
+    y.map((e, i) => {
+      xy = [...xy, { label: x[i], y: y[i] }];
+    });
+    console.log(xy);
+
     setoption({
       title: {
         text: 'Performance with respect to topic of all over attended candidate',
@@ -69,23 +75,18 @@ export default function ReportListData() {
       data: [
         {
           type: 'column',
-          dataPoints: [
-            { label: x[0], y: y[0] },
-            { label: x[1], y: y[1] },
-          ],
+          dataPoints: xy,
         },
       ],
     });
-    console.log(y);
   };
   return (
     <>
-      {console.log(list)}
-      {console.log(first)}
       {list?.length ? (
         <>
           <div>Attanded student number : {list?.length}</div>
           <div style={{ width: '60%', height: '60%' }}>
+            {console.log(option)}
             {option ? (
               <CanvasJSChart
                 options={option}

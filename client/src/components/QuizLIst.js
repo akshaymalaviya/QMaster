@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import ExistedQuizView from '../ExistedQuizView';
 import { useNavigate } from 'react-router-dom';
 
 export default function QuizLIst() {

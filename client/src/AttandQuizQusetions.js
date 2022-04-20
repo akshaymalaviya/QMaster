@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row } from 'react-bootstrap';
+
 import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function AttandQuizQusetions() {
@@ -165,10 +165,12 @@ export default function AttandQuizQusetions() {
             {first ? (
               <div className="queue mx-auto">
                 <h4>Question : {first[count].id}</h4>
-                <input
+                {/* <input
                   style={{ width: '400px' }}
                   value={first[count].question}
-                />
+                /> */}
+                <b>{first[count].question}</b>
+                <hr />
                 <br />
                 <AnswerRadio e={first[count].option} id={first[count].id} />
               </div>
