@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "./footer";
 
 const Home = () => {
   const [first, setfirst] = useState(false);
@@ -54,6 +55,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
