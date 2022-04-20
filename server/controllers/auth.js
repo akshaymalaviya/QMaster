@@ -85,11 +85,10 @@ export async function createQuiz(req, res) {
 }
 export async function submitQuiz(req, res) {
   try {
-    const { quizID, userID, userEmail, answer } = req.body;
-    // console.log(req.body);
+    const { quizID, userID, userEmail, answer } = req.body.uploadAnswer;
 
     if (!quizID || !userID || !userEmail || !answer) {
-      return res.status(422).json({ error: "Enter valid data" });
+      return res.status(422).json({ error: "Enter valid dataa" });
     }
     try {
       const list = await quizCode.findOne({ quizID: quizID });
@@ -117,6 +116,12 @@ export function getCreateQuiz(req, res, next) {
 }
 export function getQuiz(req, res, next) {
   test.find({}, (err, datas) => {
+    if (err) console.log(err);
+    res.json(datas);
+  });
+}
+export function studentList(req, res, next) {
+  quizCode.find({}, (err, datas) => {
     if (err) console.log(err);
     res.json(datas);
   });

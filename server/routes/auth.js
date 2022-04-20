@@ -10,6 +10,7 @@ import {
   getCreateQuiz,
   getQuiz,
   submitQuiz,
+  studentList,
 } from "../controllers/auth.js";
 import Authanticate from "../middleware/authanticat.js";
 const router = express.Router();
@@ -20,6 +21,8 @@ router.route("/forgotpassword").post(forgotpassword);
 router.route("/createQuiz").post(createQuiz);
 router.route("/createQuiz").get(getCreateQuiz);
 router.route("/userQuiz").get(getQuiz);
+router.route("/studentlist").get(studentList);
+
 router.route("/submitquiz").post(submitQuiz);
 
 router.route("/resetpassword:restToken").put(resetpassword);

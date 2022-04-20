@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Row } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { useLocation ,useNavigate} from "react-router-dom";
 
 export default function AttandQuizQusetions() {
+  const navigate=useNavigate();
   const location = useLocation();
   // const [tripType, setTripType] = useState([]);
   var tempAnswer=[];
@@ -23,22 +24,28 @@ export default function AttandQuizQusetions() {
       userEmail:user.email,
       answer:tempAnswer
     }
-    console.log(uploadAnswer)
-    const response=await fetch('/api/auth/submitquiz',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-      },
-      body: JSON.stringify({uploadAnswer})
-    })
-    const data=await response.json();
-    if (!data || data.status === 422) {
-      alert("invalid register");
-    } else {
-      alert(`Quiz submmited successfully `);
+    try {
+      const response=await fetch('/api/auth/submitquiz',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+        },
+        body: JSON.stringify({uploadAnswer})
+      })
+      const data=await response.json();
+      if (!data || data.status === 422) {
+        alert("invalid register");
+      } else {
+        alert(`Quiz submmited successfully `);
+      }
+    } catch (error) {
+      console.log(error)
     }
+    
     tempAnswer=[];
-    // localStorage.clear()
+    localStorage.clear()
+    navigate("/")
+    
   };
   function AnswerRadio(props) {
     console.log(props.id)

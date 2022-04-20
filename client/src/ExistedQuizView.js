@@ -1,12 +1,15 @@
 import React,{useState} from 'react'
-import { useLocation } from "react-router-dom";
+import { useLocation ,useNavigate} from "react-router-dom";
 
 export default function ExistedQuizView() {
+    let navigate=useNavigate();
+
     const location = useLocation();
 console.log(location);
-    const [first, setfirst] = useState(location.state)
+    const [first, setfirst] = useState(location.state.quizData)
   return (
       <>
+      <button onClick={()=>navigate('reportlistdata',{state:location.state})}>View Report</button>
     {first?
         first.map((e,i)=>{
             return(

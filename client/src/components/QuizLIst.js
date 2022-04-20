@@ -42,6 +42,7 @@ export default function QuizLIst() {
       });
 
       const data = await response.json();
+
       setquizData(data);
       if (!response.status === 200) {
         const error = new Error(response.error);
@@ -55,9 +56,9 @@ export default function QuizLIst() {
       <>{first?quizData.filter((e,i)=>(e.tempList.userID===first)).map((e,i)=>{
         return(
           <>
-          <div onClick={()=>navigate('/existedquizview',{state:e.tempList.quizData})}>
-            <h1>{e.tempList.timestamp}</h1>
-            <h1>{e.tempList.quizID}</h1>
+          <div onClick={()=>navigate('/existedquizview',{state:e.tempList})}>
+            <h1>{e.tempList.timestamp.toString()}</h1>
+            <h1>{e.tempList.quizID.toString()}</h1>
             </div>
             
           </>
