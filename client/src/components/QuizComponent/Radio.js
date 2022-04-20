@@ -13,7 +13,7 @@ function Radio(props) {
   var flag = dataCheck ? Object.keys(dataCheck).length : false;
   var question = '';
   var k = ['', '', '', ''];
-  var ans = 0;
+  var ans = '1';
   var suggestion = [];
   const OneRadioButton = (props) => {
     const change = (e) => {
